@@ -8,7 +8,7 @@
 
 #map {
   position:absolute; 
-  top:3.4rem; 
+  top:0rem; 
   bottom:0; 
   width:100%;
   
@@ -16,5 +16,5 @@
   
 body { 
   margin:0; 
-  padding:0.3rem;
+  padding:0rem;
   }
