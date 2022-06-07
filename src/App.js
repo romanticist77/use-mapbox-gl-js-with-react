@@ -1,4 +1,5 @@
-import React, {useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
+import useMapbox from './useMapbox.hook'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 function App() {
@@ -7,17 +8,8 @@ function App() {
     "pk.eyJ1IjoiYWNobWVkb3ciLCJhIjoiY2wzOGY4aDdqMDBodzNqcHIwZTF2Y3F3MyJ9.2Cspq7xwjY058eiwiJpdAg";
 
   const [marker, setMarker] = useState();
-  useLayoutEffect(() => {
-    const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/dark-v10",
-      center: [37.610641, 55.761994],
-      zoom: 10
-    });
-    setMarker(
-      new mapboxgl.Marker().setLngLat([37.610641, 55.761994]).addTo(map)
-    );
-  }, []);
+
+  useMapbox ("", [], 0, setMarker)
 
   const stores = {
     km20: [37.610641, 55.761994],
