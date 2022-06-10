@@ -7,9 +7,9 @@ function App() {
   mapboxgl.accessToken =
     "pk.eyJ1IjoiYWNobWVkb3ciLCJhIjoiY2wzOGY4aDdqMDBodzNqcHIwZTF2Y3F3MyJ9.2Cspq7xwjY058eiwiJpdAg";
 
-  const [marker, setMarker] = useState();
+  useMapbox("", [], 0)
 
-  useMapbox ("", [], 0, setMarker)
+  const {marker} = useMapbox();
 
   const stores = {
     km20: [37.610641, 55.761994],

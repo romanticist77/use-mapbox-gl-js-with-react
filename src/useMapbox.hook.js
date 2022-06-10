@@ -1,7 +1,10 @@
-import {useLayoutEffect } from 'react';
+import {useLayoutEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
-export default function useMapbox (container, center, zoom, setMarker) {
+export default function useMapbox (container, center, zoom) {
+
+    const [marker, setMarker] = useState();
+
     if (!container || "") {
         container = "map"
     }
@@ -22,4 +25,6 @@ export default function useMapbox (container, center, zoom, setMarker) {
         new mapboxgl.Marker().setLngLat([37.610641, 55.761994]).addTo(map)
          );
       }, []);
+
+    return {marker}
 }
