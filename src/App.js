@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import useMapbox from './useMapbox.hook'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
@@ -7,19 +7,11 @@ function App() {
   mapboxgl.accessToken =
     "pk.eyJ1IjoiYWNobWVkb3ciLCJhIjoiY2wzOGY4aDdqMDBodzNqcHIwZTF2Y3F3MyJ9.2Cspq7xwjY058eiwiJpdAg";
 
-  useMapbox("", [], 0)
+  const mapContainer = useRef()
+  
+  useMapbox(mapContainer, [], 0)
 
-  const {marker} = useMapbox();
-
-  const stores = {
-    km20: [37.610641, 55.761994],
-    belief: [37.601152, 55.733396],
-    brandshop: [37.616812, 55.767839]
-  };
-  function handleChange(e) {
-    const value = e.target.value;
-    value && marker.setLngLat(stores[value]);
-  }
+  const {handleChange} = useMapbox();
 
   return (
     <>
@@ -31,7 +23,7 @@ function App() {
           <option value="brandshop">BRANDSHOP</option>
         </select>
       </div>
-      <div id="map"></div>
+      <div ref={mapContainer} id="map"></div>
     </>
   );
 }
